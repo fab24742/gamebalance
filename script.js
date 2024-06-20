@@ -16,13 +16,14 @@ function registrarHoras() {
 
 function moverAvatar(progreso) {
     const avatar = document.getElementById('avatar');
-    const maxTop = document.getElementById('map').offsetHeight - avatar.offsetHeight;
+    const mapaContainer = document.getElementById('mapa-container');
+    const maxBottom = mapaContainer.offsetHeight - avatar.offsetHeight - 10;
 
     let currentBottom = parseInt(avatar.style.bottom) || 10;
     let newBottom = currentBottom + (progreso * 10); // Ajusta este valor según el nivel de avance deseado
 
     if (newBottom < 10) newBottom = 10;
-    if (newBottom > maxTop) newBottom = maxTop;
+    if (newBottom > maxBottom) newBottom = maxBottom;
 
     avatar.style.bottom = newBottom + 'px';
 }
