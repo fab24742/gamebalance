@@ -1,4 +1,3 @@
-// Función para registrar horas
 function registrarHoras() {
     const horasJuego = parseInt(document.getElementById('horasJuego').value);
     const horasActividad = parseInt(document.getElementById('horasActividad').value);
@@ -35,9 +34,12 @@ function registrarHoras() {
 
     // Guardar el estado en localStorage
     guardarEstado(horasJuego, horasActividad);
+
+    // Limpiar los valores de las casillas
+    document.getElementById('horasJuego').value = '';
+    document.getElementById('horasActividad').value = '';
 }
 
-// Función para mover el avatar
 function moverAvatar(progreso) {
     const avatar = document.getElementById('avatar');
     const mapaContainer = document.getElementById('mapa-container');
@@ -55,7 +57,6 @@ function moverAvatar(progreso) {
     localStorage.setItem('avatarPosition', newBottom);
 }
 
-// Función para enviar correo
 function enviarCorreo() {
     const horasJuego = parseInt(document.getElementById('horasJuego').value);
     const horasActividad = parseInt(document.getElementById('horasActividad').value);
@@ -68,7 +69,6 @@ function enviarCorreo() {
     document.getElementById('sendEmailButton').style.display = 'none';
 }
 
-// Función para volver al inicio
 function volverAlInicio() {
     const avatar = document.getElementById('avatar');
     avatar.style.bottom = '10px';
@@ -81,13 +81,11 @@ function volverAlInicio() {
     localStorage.removeItem('horasActividad');
 }
 
-// Función para guardar el estado en localStorage
 function guardarEstado(horasJuego, horasActividad) {
     localStorage.setItem('horasJuego', horasJuego);
     localStorage.setItem('horasActividad', horasActividad);
 }
 
-// Función para cargar el estado desde localStorage
 function cargarEstado() {
     const horasJuego = localStorage.getItem('horasJuego');
     const horasActividad = localStorage.getItem('horasActividad');
@@ -104,5 +102,4 @@ function cargarEstado() {
     }
 }
 
-// Llamar a la función cargarEstado al cargar la página
 window.onload = cargarEstado;
