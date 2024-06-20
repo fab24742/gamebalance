@@ -7,16 +7,16 @@
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-    <div id="map">
-        <img src="mapa.jpg" alt="Map">
-        <img id="avatar" src="avatar.png" alt="Avatar" style="bottom: 10px;">
+    <div id="mapa-container">
+        <img id="mapa" src="mapa.png" alt="Mapa">
+        <img id="avatar" src="avtar.png" alt="Avatar">
     </div>
     <div id="input-container">
-        <label for="horasJuego">Videojuego (horas):</label>
-        <input type="number" id="horasJuego" name="horasJuego">
-        <label for="horasActividad">Actividad Física (horas):</label>
-        <input type="number" id="horasActividad" name="horasActividad">
-        <button id="submit" onclick="registrarHoras()">Enviar</button>
+        <label for="horasJuego">Horas de Juego:</label>
+        <input type="number" id="horasJuego">
+        <label for="horasActividad">Horas de Actividad Física:</label>
+        <input type="number" id="horasActividad">
+        <button onclick="registrarHoras()">Enviar</button>
     </div>
     <script src="script.js"></script>
 </body>
