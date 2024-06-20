@@ -29,7 +29,7 @@ function moverAvatar(progreso) {
 }
 
 function enviarCorreo(horasJuego, horasActividad) {
-    const email = "tu_email@example.com";
+    const email = "tu_email@example.com"; // Reemplaza con tu correo
     const subject = "Registro de Horas FitQuest";
     const body = `Horas de Juego: ${horasJuego}%0AHoras de Actividad Física: ${horasActividad}`;
 
