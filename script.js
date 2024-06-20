@@ -56,8 +56,6 @@ function enviarCorreo() {
     const body = `Horas de Juego: ${horasJuego}%0AHoras de Actividad Física: ${horasActividad}`;
 
     window.location.href = `mailto:${email}?subject=${subject}&body=${body}`;
-
-    // Ocultar el botón de enviar correo
     document.getElementById('sendEmailButton').style.display = 'none';
 }
 
