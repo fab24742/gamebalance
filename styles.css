@@ -1,36 +1,43 @@
 body {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    margin: 0;
     font-family: Arial, sans-serif;
 }
 
-#map {
+#mapa-container {
     position: relative;
-    width: 100%;
-    height: 400px;
-    background-color: #f0f0f0;
+    width: 80%;
+    max-width: 400px;
 }
 
-#map img {
-    position: absolute;
-    top: 0;
-    left: 0;
+#mapa {
+    width: 100%;
 }
 
 #avatar {
-    width: 50px;
-    height: auto;
     position: absolute;
+    bottom: 10px; /* Start position of the avatar */
+    left: 10px; /* Adjust based on where you want the avatar to start */
+    width: 50px; /* Adjust size as needed */
+    transition: bottom 0.5s ease; /* Smooth transition for movement */
 }
 
 #input-container {
     margin-top: 20px;
+    text-align: center;
 }
 
-label, input {
-    display: block;
-    margin: 5px 0;
+#input-container input {
+    margin: 5px;
+    padding: 5px;
 }
 
-button {
+#input-container button {
     margin-top: 10px;
+    padding: 5px 10px;
+    cursor: pointer;
 }
-
