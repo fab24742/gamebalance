@@ -18,6 +18,7 @@ body {
 #avatar {
     width: 50px;
     height: auto;
+    position: absolute;
 }
 
 #input-container {
@@ -32,3 +33,4 @@ label, input {
 button {
     margin-top: 10px;
 }
+
