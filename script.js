@@ -1,3 +1,16 @@
+const mensajesMotivacionales = [
+    "¡No te rindas, cada paso cuenta!",
+    "¡Eres increíble, sigue así!",
+    "¡El esfuerzo de hoy es el éxito de mañana!",
+    "¡Cada día es una nueva oportunidad!",
+    "¡Sigue adelante, estás haciendo un gran trabajo!",
+    "¡No hay límites para lo que puedes lograr!",
+    "¡La perseverancia te llevará al éxito!",
+    "¡Cada esfuerzo cuenta, sigue adelante!",
+    "¡Tu dedicación es inspiradora!",
+    "¡Estás haciendo un gran progreso, sigue así!"
+];
+
 function registrarHoras() {
     const horasJuego = parseInt(document.getElementById('horasJuego').value);
     const horasActividad = parseInt(document.getElementById('horasActividad').value);
@@ -10,8 +23,15 @@ function registrarHoras() {
     const progreso = horasActividad - horasJuego;
     moverAvatar(progreso);
 
-    // Enviar correo con las horas registradas
-    enviarCorreo(horasJuego, horasActividad);
+    // Mostrar mensaje motivacional si el avatar no avanza
+    if (progreso <= 0) {
+        mostrarMensajeMotivacional();
+    } else {
+        document.getElementById('mensaje-container').innerText = '';
+    }
+
+    // Mostrar botón de enviar correo
+    document.getElementById('email-container').style.display = 'block';
 }
 
 function moverAvatar(progreso) {
@@ -28,10 +48,23 @@ function moverAvatar(progreso) {
     avatar.style.bottom = newBottom + 'px';
 }
 
-function enviarCorreo(horasJuego, horasActividad) {
-    const email = "tu_email@example.com"; // Reemplaza con tu correo
+function mostrarMensajeMotivacional() {
+    const mensajeContainer = document.getElementById('mensaje-container');
+    const mensajeAleatorio = mensajesMotivacionales[Math.floor(Math.random() * mensajesMotivacionales.length)];
+    mensajeContainer.innerText = mensajeAleatorio;
+}
+
+function enviarCorreo() {
+    const horasJuego = parseInt(document.getElementById('horasJuego').value);
+    const horasActividad = parseInt(document.getElementById('horasActividad').value);
+
+    const email = "tu_email@example.com";
     const subject = "Registro de Horas FitQuest";
     const body = `Horas de Juego: ${horasJuego}%0AHoras de Actividad Física: ${horasActividad}`;
 
     window.location.href = `mailto:${email}?subject=${subject}&body=${body}`;
+}
+
+function volverInicio() {
+    location.reload();
 }
