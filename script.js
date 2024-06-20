@@ -1,16 +1,3 @@
-const mensajesMotivacionales = [
-    "¡No te rindas, cada paso cuenta!",
-    "¡Eres increíble, sigue así!",
-    "¡El esfuerzo de hoy es el éxito de mañana!",
-    "¡Cada día es una nueva oportunidad!",
-    "¡Sigue adelante, estás haciendo un gran trabajo!",
-    "¡No hay límites para lo que puedes lograr!",
-    "¡La perseverancia te llevará al éxito!",
-    "¡Cada esfuerzo cuenta, sigue adelante!",
-    "¡Tu dedicación es inspiradora!",
-    "¡Estás haciendo un gran progreso, sigue así!"
-];
-
 function registrarHoras() {
     const horasJuego = parseInt(document.getElementById('horasJuego').value);
     const horasActividad = parseInt(document.getElementById('horasActividad').value);
@@ -23,15 +10,27 @@ function registrarHoras() {
     const progreso = horasActividad - horasJuego;
     moverAvatar(progreso);
 
-    // Mostrar mensaje motivacional si el avatar no avanza
-    if (progreso <= 0) {
-        mostrarMensajeMotivacional();
+    const mensajesMotivacionales = [
+        "¡Sigue así, estás haciendo un gran trabajo!",
+        "¡Cada paso cuenta, no te rindas!",
+        "¡El esfuerzo de hoy es el éxito de mañana!",
+        "¡Mantente enfocado y sigue avanzando!",
+        "¡Cada día es una nueva oportunidad para mejorar!",
+        "¡Eres más fuerte de lo que piensas!",
+        "¡No hay límites para lo que puedes lograr!",
+        "¡Sigue moviéndote, estás en el camino correcto!",
+        "¡Cada gota de sudor es un paso hacia tu meta!",
+        "¡El progreso es progreso, no importa cuán pequeño sea!"
+    ];
+
+    if (progreso >= 0) {
+        document.getElementById('message-container').innerText = '';
     } else {
-        document.getElementById('mensaje-container').innerText = '';
+        const mensaje = mensajesMotivacionales[Math.floor(Math.random() * mensajesMotivacionales.length)];
+        document.getElementById('message-container').innerText = mensaje;
     }
 
-    // Mostrar botón de enviar correo
-    document.getElementById('email-container').style.display = 'block';
+    document.getElementById('sendEmailButton').style.display = 'inline-block';
 }
 
 function moverAvatar(progreso) {
@@ -48,16 +47,10 @@ function moverAvatar(progreso) {
     avatar.style.bottom = newBottom + 'px';
 }
 
-function mostrarMensajeMotivacional() {
-    const mensajeContainer = document.getElementById('mensaje-container');
-    const mensajeAleatorio = mensajesMotivacionales[Math.floor(Math.random() * mensajesMotivacionales.length)];
-    mensajeContainer.innerText = mensajeAleatorio;
-}
-
 function enviarCorreo() {
     const horasJuego = parseInt(document.getElementById('horasJuego').value);
     const horasActividad = parseInt(document.getElementById('horasActividad').value);
-
+    
     const email = "tu_email@example.com";
     const subject = "Registro de Horas FitQuest";
     const body = `Horas de Juego: ${horasJuego}%0AHoras de Actividad Física: ${horasActividad}`;
@@ -65,6 +58,9 @@ function enviarCorreo() {
     window.location.href = `mailto:${email}?subject=${subject}&body=${body}`;
 }
 
-function volverInicio() {
-    location.reload();
+function volverAlInicio() {
+    const avatar = document.getElementById('avatar');
+    avatar.style.bottom = '10px';
+    document.getElementById('message-container').innerText = '';
+    document.getElementById('sendEmailButton').style.display = 'none';
 }
