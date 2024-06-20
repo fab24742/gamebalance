@@ -20,10 +20,10 @@ body {
 
 #avatar {
     position: absolute;
-    bottom: 10px; /* Start position of the avatar */
-    left: 10px; /* Adjust based on where you want the avatar to start */
-    width: 50px; /* Adjust size as needed */
-    transition: bottom 0.5s ease; /* Smooth transition for movement */
+    bottom: 10px; /* Posición inicial del avatar */
+    left: 10px; /* Ajusta según donde quieras que empiece el avatar */
+    width: 50px; /* Ajusta el tamaño según sea necesario */
+    transition: bottom 0.5s ease; /* Transición suave para el movimiento */
 }
 
 #input-container {
