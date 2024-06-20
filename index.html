@@ -9,14 +9,14 @@
 <body>
     <div id="map">
         <img src="mapa.jpg" alt="Map">
-        <img id="avatar" src="avatar.png" alt="Avatar">
+        <img id="avatar" src="avatar.png" alt="Avatar" style="bottom: 10px;">
     </div>
     <div id="input-container">
-        <label for="videojuego">Videojuego (horas):</label>
-        <input type="number" id="videojuego" name="videojuego">
-        <label for="actividad">Actividad Física (horas):</label>
-        <input type="number" id="actividad" name="actividad">
-        <button id="submit">Enviar</button>
+        <label for="horasJuego">Videojuego (horas):</label>
+        <input type="number" id="horasJuego" name="horasJuego">
+        <label for="horasActividad">Actividad Física (horas):</label>
+        <input type="number" id="horasActividad" name="horasActividad">
+        <button id="submit" onclick="registrarHoras()">Enviar</button>
     </div>
     <script src="script.js"></script>
 </body>
