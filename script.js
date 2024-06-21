@@ -36,10 +36,14 @@ function registrarHoras() {
         document.getElementById('message-container').innerText = mensaje;
     }
 
+    document.getElementById('sendEmailButton').style.display = 'inline-block';
+
+    // Guardar el estado en localStorage
+    guardarEstado(horasJuego, horasActividad);
+
+    // Limpiar los valores de las casillas
     document.getElementById('horasJuego').value = '';
     document.getElementById('horasActividad').value = '';
-
-    document.getElementById('sendEmailButton').style.display = 'inline-block';
 }
 
 function moverAvatar(progreso) {
@@ -54,6 +58,9 @@ function moverAvatar(progreso) {
     if (newBottom > maxBottom) newBottom = maxBottom;
 
     avatar.style.bottom = newBottom + 'px';
+
+    // Guardar la posición del avatar en localStorage
+    localStorage.setItem('avatarPosition', newBottom);
 }
 
 function enviarCorreo() {
@@ -70,4 +77,32 @@ function volverAlInicio() {
     avatar.style.bottom = '10px';
     document.getElementById('message-container').innerText = '';
     document.getElementById('sendEmailButton').style.display = 'none';
+
+    // Limpiar localStorage
+    localStorage.removeItem('avatarPosition');
+    localStorage.removeItem('horasJuego');
+    localStorage.removeItem('horasActividad');
 }
+
+function guardarEstado(horasJuego, horasActividad) {
+    localStorage.setItem('horasJuego', horasJuego);
+    localStorage.setItem('horasActividad', horasActividad);
+}
+
+function cargarEstado() {
+    const horasJuego = localStorage.getItem('horasJuego');
+    const horasActividad = localStorage.getItem('horasActividad');
+    const avatarPosition = localStorage.getItem('avatarPosition');
+
+    if (horasJuego !== null) {
+        document.getElementById('horasJuego').value = horasJuego;
+    }
+    if (horasActividad !== null) {
+        document.getElementById('horasActividad').value = horasActividad;
+    }
+    if (avatarPosition !== null) {
+        document.getElementById('avatar').style.bottom = avatarPosition + 'px';
+    }
+}
+
+window.onload = cargarEstado;
